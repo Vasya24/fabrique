@@ -1,93 +1,87 @@
 <template>
   <div id="conditions">
-    <div class="cond-item">
-      <header>
-        <label for="selection">Условие 1</label>
-        <select name="selection" id="selection" class="selection">
-          <option value="">Выберите условие</option>
-          <option value="age" selected>Возраст респондента</option>
-          <option value="card-type">Тип карты лояльности</option>
-          <option value="сard-status">Статус карты лояльности</option>
-        </select>
-      </header>
-      <div class="range one">
-        <span>Диапазон 1</span>
-        <div class="inputs one">
-          <label for="from-one">от</label>
-          <input type="text" id="from-one">
-          <label for="to-one">до</label>
-          <input type="text" id="to-one">
-        </div>
-      </div>
-      <div class="range two">
-        <button id="or">или</button>
-        <span>Диапазон 2</span>
-        <div class="inputs two">
-          <label for="from-one">от</label>
-          <input type="text" id="from-two">
-          <label for="to-one">до</label>
-          <input type="text" id="to-two">
-        </div>
-      </div>
-      <footer>
-        <button id="add-range"><span>&plus;</span> Добавить диапазон</button>
-        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>
+<!--    <div class="cond-item">-->
+<!--      <header>-->
+<!--        <label for="selection">Условие 1</label>-->
+3<!--      </header>-->
+<!--      <div class="range one">-->
+<!--        <span>Диапазон 1</span>-->
+<!--        <div class="inputs one">-->
+<!--          <label for="from-one">от</label>-->
+<!--          <input type="text" id="from-one">-->
+<!--          <label for="to-one">до</label>-->
+<!--          <input type="text" id="to-one">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="range two">-->
+<!--        <button id="or">или</button>-->
+<!--        <span>Диапазон 2</span>-->
+<!--        <div class="inputs two">-->
+<!--          <label for="from-one">от</label>-->
+<!--          <input type="text" id="from-two">-->
+<!--          <label for="to-one">до</label>-->
+<!--          <input type="text" id="to-two">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <footer>-->
+<!--        <button id="add-range"><span>&plus;</span> Добавить диапазон</button>-->
+<!--        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>-->
 
-      </footer>
-    </div>
-    <div class="cond-item">
-      <button id="and">И</button>
-      <header>
-        <label for="selection-two">Условие 2</label>
-        <select name="selection" id="selection-two" class="selection">
-          <option value="">Выберите условие</option>
-          <option value="age">Возраст респондента</option>
-          <option value="card-type" selected>Тип карты лояльности</option>
-          <option value="сard-status">Статус карты лояльности</option>
-        </select>
-      </header>
-      <label for="typeofcard">Тип 1</label>
-      <select id="typeofcard">
-        <option value="">Выберите тип</option>
-        <option value="gold">Gold</option>
-        <option value="silver">Silver</option>
-        <option value="regular">Regular</option>
-      </select>
-      <footer>
+<!--      </footer>-->
+<!--    </div>-->
+<!--    <div class="cond-item">-->
+<!--      <button id="and">И</button>-->
+<!--      <header>-->
+<!--        <label for="selection-two">Условие 2</label>-->
+<!--        <select name="selection" id="selection-two" class="selection">-->
+<!--          <option value="">Выберите условие</option>-->
+<!--          <option value="age">Возраст респондента</option>-->
+<!--          <option value="card-type" selected>Тип карты лояльности</option>-->
+<!--          <option value="сard-status">Статус карты лояльности</option>-->
+<!--        </select>-->
+<!--      </header>-->
+<!--      <label for="typeofcard">Тип 1</label>-->
+<!--      <select id="typeofcard">-->
+<!--        <option value="">Выберите тип</option>-->
+<!--        <option value="gold">Gold</option>-->
+<!--        <option value="silver">Silver</option>-->
+<!--        <option value="regular">Regular</option>-->
+<!--      </select>-->
+<!--      <footer>-->
 
-        <button id="add-type"><span>&plus;</span> Добавить тип</button>
-        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>
+<!--        <button id="add-type"><span>&plus;</span> Добавить тип</button>-->
+<!--        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>-->
 
-      </footer>
+<!--      </footer>-->
 
-    </div>
-    <div class="cond-item">
-      <button id="and-two">И</button>
-      <header>
-        <label for="selection-three">Условие 3</label>
-        <select name="selection" id="selection-three" class="selection">
-          <option value="">Выберите условие</option>
-          <option value="age">Возраст респондента</option>
-          <option value="card-type">Тип карты лояльности</option>
-          <option value="сard-status" selected>Статус карты лояльности</option>
-        </select>
-      </header>
-      <label for="statusofcard">Тип 1</label>
-      <select id="statusofcard">
-        <option value="">Выберите статус</option>
-        <option value="gold">Активна</option>
-        <option value="silver">Заблокирована</option>
-        <option value="regular">Перевыпускается</option>
-      </select>
-      <footer>
+<!--    </div>-->
+<!--    <div class="cond-item">-->
+<!--      <button id="and-two">И</button>-->
+<!--      <header>-->
+<!--        <label for="selection-three">Условие 3</label>-->
+<!--        <select name="selection" id="selection-three" class="selection">-->
+<!--          <option value="">Выберите условие</option>-->
+<!--          <option value="age">Возраст респондента</option>-->
+<!--          <option value="card-type">Тип карты лояльности</option>-->
+<!--          <option value="сard-status" selected>Статус карты лояльности</option>-->
+<!--        </select>-->
+<!--      </header>-->
+<!--      <label for="statusofcard">Тип 1</label>-->
+<!--      <select id="statusofcard">-->
+<!--        <option value="">Выберите статус</option>-->
+<!--        <option value="gold">Активна</option>-->
+<!--        <option value="silver">Заблокирована</option>-->
+<!--        <option value="regular">Перевыпускается</option>-->
+<!--      </select>-->
+<!--      <footer>-->
 
-        <button id="add-status"><span>&plus;</span> Добавить статус</button>
-        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>
+<!--        <button id="add-status"><span>&plus;</span> Добавить статус</button>-->
+<!--        <button class="delete-condition"><img src="@/assets/delete.png" alt="delete"> Удалить условие</button>-->
 
-      </footer>
+<!--      </footer>-->
 
 
-    </div>
+<!--    </div>-->
     <div class="cond-item">
       <header>
         <label for="selection-four">Условие 3</label>
@@ -100,6 +94,21 @@
       </header>
 
     </div>
+
+  <div id="bottom">
+    <header>
+      <div class="header-content">
+        <p class="header-plus">&plus;</p>
+        <p>Нажмите, чтобы добавить новое условие выборки.</p>
+        <p>Все условия связываются между собой логическим "И"</p>
+
+      </div>
+    </header>
+    <div id="bottom-footer">
+      <button class="test-survey">Протестировать опрос</button>
+      <button class="next">Далее &rarr;</button>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -299,4 +308,54 @@ name: "Conditions"
     position: absolute;
     top: -25px;
   }
+
+#bottom {
+  width: 1020px;
+  position: absolute;
+  background-color: #fff;
+  top: 1467px;
+}
+#bottom > header {
+  padding-top: 45px;
+  padding-left: 40px;
+  height: 230px;
+}
+.header-content {
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 2px solid #E5ECF0;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 32px;
+  color: #0D7616;
+  width: 940px
+}
+.header-plus {
+  font-size: 50px;
+}
+#bottom-footer {
+  height: 110px;
+  width: 1020px;
+  position: absolute;
+  background-color: #F4F7F9;
+}
+#bottom-footer > button {
+  border: none;
+  position: relative;
+  top: 30px;
+}
+.test-survey {
+  width: 220px;
+  height: 50px;
+  color: #07A101;
+  left: 40px;
+}
+.next {
+  width: 121px;
+  height: 50px;
+  background-color: #0DA30E;
+  color: #fff;
+  left: 599px;
+}
+
 </style>
