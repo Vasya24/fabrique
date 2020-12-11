@@ -36,9 +36,9 @@ name: "Container",
       <p class="condition-label">Условие <span></span></p>
               <select name="selection" class="selection">
                 <option value="none">Выберите условие</option>
-                <option value="age" v-on:click="variant = 1">Возраст респондента</option>
-                <option value="card-type" v-on:click="variant = 2">Тип карты лояльности</option>
-                <option value="card-status" v-on:click="variant = 3">Статус карты лояльности</option>
+                <option value="age" >Возраст респондента</option>
+                <option value="card-type" >Тип карты лояльности</option>
+                <option value="card-status" >Статус карты лояльности</option>
               </select>
     </header>
             <div class="form-control">
@@ -51,10 +51,10 @@ name: "Container",
       document.querySelector('.conditions').insertAdjacentHTML('beforeend', item);
       let buttons = document.querySelectorAll('.delete');
       for (let button of buttons) {
-        button.onclick = function(e) {
+        button.addEventListener('click', function(e) {
           // e.target.parentNode.parentNode.remove()
           e.target.closest('.container-item').remove()
-        }
+        })
       }
 
       let ages = document.querySelectorAll('option[value="age"]'),
@@ -65,7 +65,7 @@ name: "Container",
 
       for (let age of ages) {
         contItem = age.closest('.container-item');
-        age.onclick = () => {
+        age.addEventListener('click', () => {
           contItem.children[1].remove();
 
           let ageBox = `
@@ -103,7 +103,8 @@ name: "Container",
             }
             contItem.classList.remove('type-variant', 'status-variant')
             contItem.classList.add('age-variant')
-        }
+
+        })
       }
 
       for (let type of types) {
