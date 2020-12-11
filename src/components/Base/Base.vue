@@ -3,24 +3,18 @@
     <BaseTop />
     <AddNewSurvey />
     <Container />
-<!--    <Conditions />-->
-<!--    <Bottom />-->
   </div>
 </template>
 
 <script>
 import BaseTop from "@/components/Base/BaseTop";
 import AddNewSurvey from "@/components/Base/AddNewSurvey";
-// import Conditions from "@/components/Base/Conditions";
-// import Bottom from "@/components/Base/Bottom";
 import Container from "@/components/Base/Container";
 export default {
   name: "Base",
   components: {
     BaseTop,
     AddNewSurvey,
-    // Conditions,
-    // Bottom,
     Container
   }
 }
