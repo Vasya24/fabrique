@@ -22,11 +22,6 @@
 <script>
 export default {
 name: "Container",
-  data() {
-  return {
-    variant: 0
-  }
-  },
   methods: {
 
     onSubmit() {
@@ -49,10 +44,13 @@ name: "Container",
     </div>
 `;
       document.querySelector('.conditions').insertAdjacentHTML('beforeend', item);
+
+
       let buttons = document.querySelectorAll('.delete');
       for (let button of buttons) {
         button.addEventListener('click', function(e) {
           // e.target.parentNode.parentNode.remove()
+
           e.target.closest('.container-item').remove()
         })
       }
@@ -77,7 +75,7 @@ name: "Container",
         </div>
         <div class="form-control">
         <button class="add-range">Добавить диапазон</button>
-                  <button type="button" class="delete">
+                  <button type="button" class="delete delete-age">
         Удалить условие
       </button>
       </div>
@@ -97,15 +95,21 @@ name: "Container",
             for (let a of addRng) {
               for (let r of range) {
                 a.onclick = () => {
-                  r.insertAdjacentHTML('afterbegin', nextRange)
+                  r.insertAdjacentHTML('beforeend', nextRange)
                 }
               }
             }
             contItem.classList.remove('type-variant', 'status-variant')
             contItem.classList.add('age-variant')
-
+            let ageDelete = document.querySelectorAll('.delete-age');
+            for (let ad of ageDelete) {
+            ad.onclick = () => {
+                ad.closest('.age-variant').remove()
+              }
+            }
         })
-      }
+        }
+
 
       for (let type of types) {
         contItem = type.closest('.container-item')
@@ -124,7 +128,7 @@ name: "Container",
         </div>
         <div class="form-control">
         <button class="add-type">Добавить тип</button>
-        <button type="button" class="delete">
+        <button type="button" class="delete delete-type">
         Удалить условие
       </button>
       </div>
@@ -155,6 +159,12 @@ name: "Container",
 
           contItem.classList.remove('age-variant', 'status-variant')
           contItem.classList.add('type-variant')
+          let typeDelete = document.querySelectorAll('.delete-type');
+          for (let td of typeDelete) {
+            td.onclick = () => {
+              td.closest('.type-variant').remove()
+            }
+          }
         }
       }
 
@@ -177,7 +187,7 @@ name: "Container",
         </div>
         <div class="form-control">
         <button class="add-status">Добавить статус</button>
-        <button type="button" class="delete">
+        <button type="button" class="delete delete-status">
         Удалить условие
       </button>
       </div>
@@ -211,10 +221,14 @@ name: "Container",
 
           contItem.classList.remove('age-variant', 'type-variant')
           contItem.classList.add('status-variant');
-
+          let statDelete = document.querySelectorAll('.delete-status');
+          for (let sd of statDelete) {
+            sd.onclick = () => {
+              sd.closest('.status-variant').remove()
+            }
+          }
         }
       }
-
     },
   }
 }
@@ -288,7 +302,7 @@ name: "Container",
     font-weight: 200;
   }
   .range {
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
   /* .add-range{*/
   /*  box-sizing: border-box;*/
