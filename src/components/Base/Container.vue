@@ -1,6 +1,23 @@
 <template>
 <div id="container">
   <div class="conditions">
+<!--    <div class="container-item hidden">-->
+<!--      <header>-->
+<!--        <p class="condition-label">Условие <span></span></p>-->
+<!--        <select name="selection" class="selection">-->
+<!--          <option value="none">Выберите условие</option>-->
+<!--          <option value="age">Возраст респондента</option>-->
+<!--          <option value="card-type" >Тип карты лояльности</option>-->
+<!--          <option value="card-status" >Статус карты лояльности</option>-->
+<!--        </select>-->
+<!--      </header>-->
+<!--      <div class="form-control">-->
+<!--        <button type="button" class="delete">-->
+<!--          Удалить условие-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+
   </div>
   <div id="footer">
     <form @submit.prevent="onSubmit">
@@ -21,7 +38,7 @@
 
 <script>
 export default {
-name: "Container",
+  name: "Container",
   methods: {
 
     onSubmit() {
@@ -31,7 +48,7 @@ name: "Container",
       <p class="condition-label">Условие <span></span></p>
               <select name="selection" class="selection">
                 <option value="none">Выберите условие</option>
-                <option value="age" >Возраст респондента</option>
+                <option value="age">Возраст респондента</option>
                 <option value="card-type" >Тип карты лояльности</option>
                 <option value="card-status" >Статус карты лояльности</option>
               </select>
@@ -43,30 +60,32 @@ name: "Container",
       </div>
     </div>
 `;
+
       document.querySelector('.conditions').insertAdjacentHTML('beforeend', item);
 
 
       let buttons = document.querySelectorAll('.delete');
       for (let button of buttons) {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
           // e.target.parentNode.parentNode.remove()
 
           e.target.closest('.container-item').remove()
         })
       }
 
-      let ages = document.querySelectorAll('option[value="age"]'),
-          types = document.querySelectorAll('option[value="card-type"]'),
-          status = document.querySelectorAll('option[value="card-status"]');
-
+      // let ages = document.querySelectorAll('option[value="age"]'),
+      //     types = document.querySelectorAll('option[value="card-type"]'),
+      //     status = document.querySelectorAll('option[value="card-status"]');
+      let selects = document.querySelectorAll('select')
       let contItem;
 
-      for (let age of ages) {
-        contItem = age.closest('.container-item');
-        age.addEventListener('click', () => {
-          contItem.children[1].remove();
+      for (let sel of selects) {
+        contItem = sel.closest('.container-item');
+        sel.addEventListener('change', function () {
+          if (sel.selectedIndex === 1) {
+            contItem.children[1].remove();
 
-          let ageBox = `
+            let ageBox = `
                   <div class="age-box">
         <div class="range">
           <span class="range-mark">Диапазон</span>
@@ -82,14 +101,14 @@ name: "Container",
       </div>
 
             `
-          let nextRange = `
+            let nextRange = `
                   <div class="range">
           <span class="range-mark">Диапазон</span>
           <span class="from">от</span><input type="text" class="from-input">
           <span class="to">до</span><input type="text" class="to-input">
         </div>
           `
-          contItem.children[0].insertAdjacentHTML('afterend', ageBox);
+            contItem.children[0].insertAdjacentHTML('afterend', ageBox);
             let range = document.querySelectorAll('.range');
             let addRng = document.querySelectorAll('.add-range');
             for (let a of addRng) {
@@ -103,19 +122,13 @@ name: "Container",
             contItem.classList.add('age-variant')
             let ageDelete = document.querySelectorAll('.delete-age');
             for (let ad of ageDelete) {
-            ad.onclick = () => {
+              ad.onclick = () => {
                 ad.closest('.age-variant').remove()
               }
             }
-        })
-        }
-
-
-      for (let type of types) {
-        contItem = type.closest('.container-item')
-        type.onclick = () => {
-          contItem.children[1].remove();
-          let typeBox = `
+          } else if (sel.selectedIndex === 2) {
+            contItem.children[1].remove();
+            let typeBox = `
                 <div class="type-box">
         <div class="type">
           <span class="type-mark">Тип</span>
@@ -134,7 +147,7 @@ name: "Container",
       </div>
       </div>
           `
-          let typeSel = `
+            let typeSel = `
                   <div class="type">
           <span class="type-mark">Тип</span>
           <select name="type-selection" class="type-selection">
@@ -145,35 +158,31 @@ name: "Container",
           </select>
         </div>
 `
-          contItem.children[0].insertAdjacentHTML('afterend', typeBox);
+            contItem.children[0].insertAdjacentHTML('afterend', typeBox);
 
-          let typ = document.querySelectorAll('.type');
-          let addType= document.querySelectorAll('.add-type');
-          for (let a of addType) {
-            for (let t of typ) {
-              a.onclick = () => {
-                t.insertAdjacentHTML('afterbegin', typeSel)
+            let typ = document.querySelectorAll('.type');
+            let addType = document.querySelectorAll('.add-type');
+            for (let a of addType) {
+              for (let t of typ) {
+                a.onclick = () => {
+                  t.insertAdjacentHTML('afterbegin', typeSel)
+                }
               }
             }
-          }
 
-          contItem.classList.remove('age-variant', 'status-variant')
-          contItem.classList.add('type-variant')
-          let typeDelete = document.querySelectorAll('.delete-type');
-          for (let td of typeDelete) {
-            td.onclick = () => {
-              td.closest('.type-variant').remove()
+            contItem.classList.remove('age-variant', 'status-variant')
+            contItem.classList.add('type-variant')
+            let typeDelete = document.querySelectorAll('.delete-type');
+            for (let td of typeDelete) {
+              td.onclick = () => {
+                td.closest('.type-variant').remove()
+              }
             }
-          }
-        }
-      }
+          } else if (sel.selectedIndex === 3) {
 
-      for (let stat of status) {
-        contItem = stat.closest('.container-item')
-        stat.onclick = () => {
-          contItem.children[1].remove();
+            contItem.children[1].remove();
 
-          let statusBox = `
+            let statusBox = `
       <div class="status-box">
         <div class="status">
           <span class="status-mark">Тип</span>
@@ -195,7 +204,7 @@ name: "Container",
 
 
           `
-          let statusSel = `
+            let statusSel = `
         <div class="status">
           <span class="status-mark">Тип</span>
           <select name="status-selection" class="status-selection">
@@ -207,29 +216,30 @@ name: "Container",
           </select>
         </div>
 `
-          contItem.children[0].insertAdjacentHTML('afterend', statusBox);
+            contItem.children[0].insertAdjacentHTML('afterend', statusBox);
 
-          let stat = document.querySelectorAll('.status');
-          let addStatus= document.querySelectorAll('.add-status');
-          for (let a of addStatus) {
-            for (let s of stat) {
-              a.onclick = () => {
-                s.insertAdjacentHTML('afterbegin', statusSel)
+            let stat = document.querySelectorAll('.status');
+            let addStatus = document.querySelectorAll('.add-status');
+            for (let a of addStatus) {
+              for (let s of stat) {
+                a.onclick = () => {
+                  s.insertAdjacentHTML('afterbegin', statusSel)
+                }
+              }
+            }
+
+            contItem.classList.remove('age-variant', 'type-variant')
+            contItem.classList.add('status-variant');
+            let statDelete = document.querySelectorAll('.delete-status');
+            for (let sd of statDelete) {
+              sd.onclick = () => {
+                sd.closest('.status-variant').remove()
               }
             }
           }
-
-          contItem.classList.remove('age-variant', 'type-variant')
-          contItem.classList.add('status-variant');
-          let statDelete = document.querySelectorAll('.delete-status');
-          for (let sd of statDelete) {
-            sd.onclick = () => {
-              sd.closest('.status-variant').remove()
-            }
-          }
-        }
+        })
       }
-    },
+    }
   }
 }
 </script>
@@ -256,6 +266,9 @@ name: "Container",
   }
   .container-item.status-variant {
     background-color: #FAFFF8;
+  }
+  .hidden {
+    display: none;
   }
   .container-item header {
     display: flex;
@@ -388,7 +401,6 @@ name: "Container",
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
-
   }
   #plus {
     font-size: 5rem;
